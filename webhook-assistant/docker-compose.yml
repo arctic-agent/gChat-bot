@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  webhook-assistant:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gchat-webhook-assistant
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./token.json:/app/token.json:ro
+      - ./.thread_memory.json:/app/.thread_memory.json:rw
+      - ./.permanent_facts.json:/app/.permanent_facts.json:rw
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+

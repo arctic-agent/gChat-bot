@@ -1,0 +1,84 @@
+# ==============================================================================
+# Security & Secret Files (NEVER COMMIT SENSITIVE DATA)
+# ==============================================================================
+.env
+.env.*
+!.env.example
+*.env
+
+# Google Cloud & OAuth Credential Secrets
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!credentials.json.example
+!token.json.example
+
+# Explicit sensitive token and credential patterns
+*token*.json
+*credential*.json
+*secret*.json
+*service_account*.json
+*service-account*.json
+*key*.json
+*.pem
+*.key
+*.p12
+
+# Runtime Cache & State
+.seen_messages.json
+*.seen_messages.json
+*.cache
+*.db
+*.sqlite3
+
+# ==============================================================================
+# Python Runtime & Dependencies
+# ==============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+.env.venv/
+
+# ==============================================================================
+# Docker & Deployment
+# ==============================================================================
+*.docker.log
+docker-compose.override.yml
+
+# ==============================================================================
+# IDE & System Files
+# ==============================================================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini

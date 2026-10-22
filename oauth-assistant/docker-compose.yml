@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  oauth-assistant:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gchat-oauth-assistant
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Mount token.json as read-write so the container can silently refresh expired tokens
+      - ./token.json:/app/token.json:rw
+      - ./credentials.json:/app/credentials.json:ro
+      # Persist conversation memory and learned facts across container restarts
+      - ./.thread_memory.json:/app/.thread_memory.json:rw
+      - ./.permanent_facts.json:/app/.permanent_facts.json:rw
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
